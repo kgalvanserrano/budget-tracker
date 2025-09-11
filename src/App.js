@@ -2,6 +2,7 @@ import './App.css'
 import { useState } from 'react'
 import TransactionForm from './components/TransactionForm'
 import TransactionList from './components/TransactionList'
+import Summary from './components/Summary';
 
 function App() {
   const [transactions, setTransactions] = useState([]);
@@ -19,6 +20,7 @@ function App() {
       <main>
         <TransactionForm addTransaction={addTransaction} />
         <TransactionList transactions={transactions} />
+        <Summary transactions={transactions} />
       </main>
     </div>
   )
