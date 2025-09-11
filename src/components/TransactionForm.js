@@ -4,8 +4,6 @@
 // builds a transaction object and passes it up to App
 // resets form fields after submission
 
-
-import React from "react";
 import { useState } from "react";
 
 function TransactionForm({ addTransaction }) {

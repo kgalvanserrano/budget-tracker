@@ -1,16 +1,27 @@
-import React from 'react'
 import './App.css'
+import { useState } from 'react'
+import TransactionForm from './components/TransactionForm'
+import TransactionList from './components/TransactionList'
 
 function App() {
+  const [transactions, setTransactions] = useState([]);
+
+  const addTransaction = (transaction) => {
+    setTransactions((prev) => [...prev, transaction]);
+  };
+
   return (
     <div className="App">
       <header>
         <h1>Budget Tracker</h1>
         <p>Start adding income and expenses.</p>
       </header>
+      <main>
+        <TransactionForm addTransaction={addTransaction} />
+        <TransactionList transactions={transactions} />
+      </main>
     </div>
   )
 }
 
 export default App
-// ...existing code...
