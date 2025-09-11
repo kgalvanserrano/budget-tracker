@@ -1,3 +1,10 @@
+// holds input state locally
+// updates state as the user types (onChange)
+// prevents page reload on form submit (e.preventDefault())
+// builds a transaction object and passes it up to App
+// resets form fields after submission
+
+
 import React from "react";
 import { useState } from "react";
 
