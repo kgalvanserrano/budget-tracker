@@ -3,6 +3,7 @@ import { useState } from 'react'
 import TransactionForm from './components/TransactionForm'
 import TransactionList from './components/TransactionList'
 import Summary from './components/Summary';
+import SpendingChart from './components/SpendingChart';
 
 function App() {
   const [transactions, setTransactions] = useState([]);
@@ -21,6 +22,7 @@ function App() {
         <TransactionForm addTransaction={addTransaction} />
         <TransactionList transactions={transactions} />
         <Summary transactions={transactions} />
+        <SpendingChart transactions={transactions} />
       </main>
     </div>
   )
