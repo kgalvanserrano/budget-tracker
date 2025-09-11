@@ -1,6 +1,18 @@
 export default function Summary ({ transactions }) {
-    const totalIncome = transactions.filter()
-    const totalExpense =  transactions.reduce()
+    const totalIncome = transactions.reduce((acc, transaction) => { // acc = accumulator
+        if (transaction.type === "income") {
+            return acc + transaction.amount;
+        }
+        return acc; // skip
+    }, 0);
+
+    const totalExpense = transactions.reduce((acc, transaction) => {
+        if (transaction.type === "expense") {
+            return acc + transaction.amount;
+        }
+        return acc; // skip
+    }, 0);
+
     const netIncome = totalIncome - totalExpense;
 
     return (
