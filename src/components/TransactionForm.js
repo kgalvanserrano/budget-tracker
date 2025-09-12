@@ -10,7 +10,6 @@ function TransactionForm({ addTransaction }) {
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState(0);
   const [type, setType] = useState("income");
-  const [category, setCategory] = useState("");
   const isValid =
     description.trim() !== "" &&
     amount > 0 &&
