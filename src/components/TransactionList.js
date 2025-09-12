@@ -6,7 +6,7 @@
 export default function TransactionList({ transactions }) {
   transactions.sort((a, b) => b.id - a.id); // sort by most recent
   return (
-    <ul className="transaction-list">
+    <ul className="transaction-list" style={{ listStyleType: "none", padding: 0 }}>
       {[...transactions] // make a shallow copy
         .sort((a, b) => b.id - a.id) // sort the copy
         .map((tx) => (
