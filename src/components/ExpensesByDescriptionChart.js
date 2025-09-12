@@ -2,7 +2,7 @@ import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
-export default function ExpensesByCategoryChart({ transactions }) {
+export default function ExpensesByDescriptionChart({ transactions }) {
     const expenses = transactions.filter((t) => t.type === "expense");
     const descriptionTotals = expenses.reduce((acc, expense) => {
         acc[expense.description] = (acc[expense.description] || 0) + expense.amount;

@@ -4,7 +4,7 @@ import TransactionForm from './components/TransactionForm'
 import TransactionList from './components/TransactionList'
 import Summary from './components/Summary';
 import IncomeExpenseChart from './components/IncomeExpenseChart';
-import ExpensesByCategoryChart from './components/ExpensesByCategoryChart';
+import ExpensesByDescriptionChart from './components/ExpensesByDescriptionChart';
 function App() {
   const [transactions, setTransactions] = useState([]);
 
@@ -23,7 +23,7 @@ function App() {
         <TransactionList transactions={transactions} />
         <Summary transactions={transactions} />
         <IncomeExpenseChart transactions={transactions} />
-        <ExpensesByCategoryChart transactions={transactions} />
+        <ExpensesByDescriptionChart transactions={transactions} />
       </main>
     </div>
   )
