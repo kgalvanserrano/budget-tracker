@@ -2,6 +2,11 @@ import { useState } from "react";
 
 export default function AuthForm( { onLogin }) {
 	const [user, setUser] = useState({ email: "", password: "" });
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		onLogin(user.email);
+		setUser({ email: "", password: "" });
+	}
 
 	return (
 		<form onSubmit={handleSubmit}>
