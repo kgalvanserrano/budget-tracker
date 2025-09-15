@@ -1,5 +1,5 @@
 import './App.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import TransactionForm from './components/TransactionForm'
 import TransactionList from './components/TransactionList'
 import Summary from './components/Summary';
@@ -17,9 +17,15 @@ function App() {
   const [user, setUser] = useState(null);
 
   const handleLogin = (email) => {
-    setUser(email); // mock login
+    setUser(email);
+    localStorage.setItem('user', email); // mock login
   };
-
+  useEffect(() => {
+    const savedUser = localStorage.getItem('user');
+    if (savedUser) {
+      setUser(savedUser);
+    }
+  }, []);
 
   return (
     <div className="App">
