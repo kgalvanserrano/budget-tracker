@@ -23,6 +23,8 @@ export default function AuthForm( { onLogin }) {
 				onChange={(e) => setUser({ ...user, password: e.target.value })}
 			/>
 			<button type="submit">Login</button>
+			<button type="button" onClick={() => onLogin("Guest")}>Continue as Guest</button>
+
 		</form>
 	);
 }
