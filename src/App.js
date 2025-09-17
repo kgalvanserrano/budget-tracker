@@ -27,6 +27,12 @@ function App() {
     return savedTransactions ? JSON.parse(savedTransactions) : [];
   });
 
+  // logout handler
+  const handleLogout = () => {
+    setUser(null);
+    localStorage.removeItem('user');
+  }
+
   useEffect(() => {
     const savedUser = localStorage.getItem('user');
     if (savedUser) {
@@ -48,6 +54,7 @@ function App() {
             <h1>Budget Tracker</h1>
             <p>Start adding income and expenses.</p>
             <p>Welcome, {user}</p>
+            {user && <button onClick={handleLogout}>Logout</button>}
           </header>
           <main>
             <TransactionForm addTransaction={addTransaction} />
