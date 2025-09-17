@@ -8,7 +8,7 @@ import ExpensesByDescriptionChart from './components/ExpensesByDescriptionChart'
 import AuthForm from './components/AuthForm';
 
 function App() {
-  const [transactions, setTransactions] = useState([]);
+  // Removed duplicate transactions state declaration
 
   const addTransaction = (transaction) => {
     setTransactions((prev) => [...prev, transaction]);
@@ -20,12 +20,23 @@ function App() {
     setUser(email);
     localStorage.setItem('user', email); // mock login
   };
+
+  // intit state that reads localStorage once
+  const [transactions, setTransactions] = useState(() => {
+    const savedTransactions = localStorage.getItem('transactions');
+    return savedTransactions ? JSON.parse(savedTransactions) : [];
+  });
+
   useEffect(() => {
     const savedUser = localStorage.getItem('user');
     if (savedUser) {
       setUser(savedUser);
     }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem('transactions', JSON.stringify(transactions));
+  }, [transactions]);
 
   return (
     <div className="App">
