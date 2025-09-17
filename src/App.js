@@ -9,13 +9,14 @@ import AuthForm from './components/AuthForm';
 
 function App() {
   // Removed duplicate transactions state declaration
-
   const addTransaction = (transaction) => {
     setTransactions((prev) => [...prev, transaction]);
   };
 
+  // user state for authentication
   const [user, setUser] = useState(null);
 
+  // login handler
   const handleLogin = (email) => {
     setUser(email);
     localStorage.setItem('user', email); // mock login
@@ -31,15 +32,15 @@ function App() {
   const handleLogout = () => {
     setUser(null);
     localStorage.removeItem('user');
-  }
-
+  };
+  // load user from localStorage on mount
   useEffect(() => {
     const savedUser = localStorage.getItem('user');
     if (savedUser) {
       setUser(savedUser);
     }
   }, []);
-
+  // save transactions to localStorage on change
   useEffect(() => {
     localStorage.setItem('transactions', JSON.stringify(transactions));
   }, [transactions]);
