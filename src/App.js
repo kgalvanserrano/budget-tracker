@@ -6,6 +6,7 @@ import Summary from './components/Summary';
 import IncomeExpenseChart from './components/IncomeExpenseChart';
 import ExpensesByDescriptionChart from './components/ExpensesByDescriptionChart';
 import AuthForm from './components/AuthForm';
+import Header from './components/Header';
 
 function App() {
   // Removed duplicate transactions state declaration
@@ -52,10 +53,7 @@ function App() {
       ) : (
         <>
           <header>
-            <h1>Budget Tracker</h1>
-            <p>Start adding income and expenses.</p>
-            <p>Welcome, {user}</p>
-            {user && <button onClick={handleLogout}>Logout</button>}
+            <Header user={user} onLogout={handleLogout} />
           </header>
           <main>
             <TransactionForm addTransaction={addTransaction} />
