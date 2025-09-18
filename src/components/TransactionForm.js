@@ -36,8 +36,7 @@ function TransactionForm({ addTransaction }) {
 
     // reset form
     setDescription("");
-    setAmount(0);
-    setType("income");
+    setAmount("");
   };
 
   return (
