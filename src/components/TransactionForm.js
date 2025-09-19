@@ -40,7 +40,7 @@ function TransactionForm({ addTransaction }) {
   };
 
   return (
-    <div className="transaction-form">
+    <div className="transaction-form section card">
       <h2>Add Transaction</h2>
       <form onSubmit={handleSubmit}>
         <input
@@ -62,9 +62,7 @@ function TransactionForm({ addTransaction }) {
           <option value="income">Income</option>
         </select>
         {error && <p className="error">{error}</p>}
-        <button type="submit" disabled={!isValid}>
-          Add
-        </button>
+        <button className="btn btn-primary" type="submit" disabled={!isValid}>Add</button>
       </form>
     </div>
   );

@@ -1,70 +1,88 @@
-# Getting Started with Create React App
+# Budget Tracker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Track income and expenses with clear summaries and charts. Built with a sleek, minimal green theme to evoke “money” without clutter.
 
-## Available Scripts
+- Live demo: https://budget-tracker.kgalvan.dev
+- Tech: React (CRA), react-chartjs-2, Chart.js
 
-In the project directory, you can run:
+## Features
+- Add income and expense transactions
+- LocalStorage persistence (survives refresh)
+- Summary totals and net income
+- Two charts: Income vs. Expenses and Expenses by Description
+- Basic auth mock using LocalStorage (simple login/logout)
+- Responsive layout + dark-mode support (prefers-color-scheme)
 
-### `npm start`
+## Screenshots
+Add a screenshot here (optional):
+`/screenshot/demo.png`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Getting started
+Prereqs: Node.js 16+ recommended
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Install and run dev server:
 
-### `npm test`
+```bash
+npm install
+npm start
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Open http://localhost:3000.
 
-### `npm run build`
+## Build
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm run build
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Outputs static assets to `build/`.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Deploy
+Works well on Vercel, Netlify, or any static host.
 
-### `npm run eject`
+- Vercel (CLI):
+	```bash
+	npm i -g vercel
+	vercel
+	vercel --prod
+	```
+- Netlify (CLI):
+	```bash
+	npm i -g netlify-cli
+	netlify deploy --prod --dir=build
+	```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Custom domain suggestion: `budget-tracker.kgalvan.dev`.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Project structure (high level)
+```
+src/
+	components/
+		AuthForm.js
+		Header.js
+		TransactionForm.js
+		TransactionList.js
+		Summary.js
+		IncomeExpenseChart.js
+		ExpensesByDescriptionChart.js
+	App.js
+	index.js
+	index.css
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Accessibility & UX
+- High-contrast theme and clear focus rings
+- Keyboard-friendly forms and buttons
+- Charts with formatted tooltips and readable legends
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Roadmap
+- Migrate to Vite for faster dev builds
+- Add persistent backend storage (e.g., Postgres/Supabase)
+- Export CSV / import transactions
 
-## Learn More
+## License
+MIT
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Built by [Kevin Galvan](https://kgalvan.dev) • [GitHub](https://github.com/kgalvanserrano)

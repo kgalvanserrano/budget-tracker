@@ -7,6 +7,7 @@ import IncomeExpenseChart from './components/IncomeExpenseChart';
 import ExpensesByDescriptionChart from './components/ExpensesByDescriptionChart';
 import AuthForm from './components/AuthForm';
 import Header from './components/Header';
+import Footer from './components/Footer';
 
 function App() {
   // Removed duplicate transactions state declaration
@@ -55,13 +56,18 @@ function App() {
           <header>
             <Header user={user} onLogout={handleLogout} />
           </header>
-          <main>
+          <main className="container">
             <TransactionForm addTransaction={addTransaction} />
-            <TransactionList transactions={transactions} />
-            <Summary transactions={transactions} />
-            <IncomeExpenseChart transactions={transactions} />
-            <ExpensesByDescriptionChart transactions={transactions} />
+            <div className="grid-2">
+              <Summary transactions={transactions} />
+              <TransactionList transactions={transactions} />
+            </div>
+            <div className="grid-charts">
+              <IncomeExpenseChart transactions={transactions} />
+              <ExpensesByDescriptionChart transactions={transactions} />
+            </div>
           </main>
+          <Footer />
         </>
       )}
     </div>

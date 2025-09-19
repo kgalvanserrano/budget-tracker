@@ -1,19 +1,8 @@
 import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import { useState } from "react";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 export default function SpendingChart({ transactions }) {
-    const [expenses, setExpenses] = useState([]);
-    const addExpense = (category, amount) => {
-        setExpenses((prev) => [...prev, { category, amount }]);
-    }
-    const categoryTotals = expenses.reduce((acc, expense) => {
-        acc[expense.category] = (acc[expense.category] || 0) + expense.amount;
-        return acc;
-    }, {});
-    const labels = Object.keys(categoryTotals);
-    const data = Object.values(categoryTotals);
     
 
   const totalIncome = transactions.reduce((acc, transaction) => {
@@ -35,15 +24,39 @@ export default function SpendingChart({ transactions }) {
     datasets: [
       {
         data: [totalIncome, totalExpense],
-        backgroundColor: ["#4CAF50", "#F44336"],
+        backgroundColor: [
+          getComputedStyle(document.documentElement).getPropertyValue('--color-primary').trim() || '#1A7F5A',
+          '#EF4444'
+        ],
       },
     ],
   };
 
+  const options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        labels: { color: getComputedStyle(document.documentElement).getPropertyValue('--color-text').trim() || '#111827' }
+      },
+      tooltip: {
+        callbacks: {
+          label: (ctx) => {
+            const label = ctx.label || '';
+            const value = ctx.raw ?? 0;
+            return `${label}: $${Number(value).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+          }
+        }
+      }
+    }
+  };
+
   return (
-    <div>
+    <div className="section card">
       <h2>Spending Chart</h2>
-      <Pie data={chartData} options={{ responsive: true }} />
+      <div className="chart-wrap">
+        <Pie data={chartData} options={options} />
+      </div>
     </div>
   );
 }

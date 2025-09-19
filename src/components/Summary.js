@@ -15,12 +15,12 @@ export default function Summary ({ transactions }) {
 
     const netIncome = totalIncome - totalExpense;
 
-    return (
-        <div>
-            <h2>Summary</h2>
-            <p>Total Income: {totalIncome}</p>
-            <p>Total Expense: {totalExpense}</p>
-            <p>Net Income: {netIncome}</p>
-        </div>
-    );
+        return (
+            <div className="section card stack-sm">
+                <h2>Summary</h2>
+                <p><strong>Total Income:</strong> ${totalIncome}</p>
+                <p><strong>Total Expenses:</strong> ${totalExpense}</p>
+                <p><strong>Net Income:</strong> ${netIncome}</p>
+            </div>
+        );
 }

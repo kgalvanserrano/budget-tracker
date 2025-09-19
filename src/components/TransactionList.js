@@ -6,12 +6,13 @@
 export default function TransactionList({ transactions }) {
   transactions.sort((a, b) => b.id - a.id); // sort by most recent
   return (
-    <ul className="transaction-list" style={{ listStyleType: "none", padding: 0 }}>
+    <ul className="transaction-list section card">
       {[...transactions] // make a shallow copy
         .sort((a, b) => b.id - a.id) // sort the copy
         .map((tx) => (
           <li key={tx.id} className={tx.type === "income" ? "green" : "red"}>
-            {tx.description}: ${tx.amount.toFixed(2)} ({tx.type})
+            <span>{tx.description}</span>
+            <span className="tx-amount">${tx.amount.toFixed(2)} ({tx.type})</span>
           </li>
         ))}
     </ul>

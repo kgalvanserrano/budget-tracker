@@ -12,30 +12,46 @@ export default function ExpensesByDescriptionChart({ transactions }) {
     const labels = Object.keys(descriptionTotals);
     const data = Object.values(descriptionTotals);
 
+    const palette = [
+      '#2ECC71', '#34D399', '#22C55E', '#10B981', '#059669', '#16A34A', '#65A30D'
+    ];
     const chartData = {
     labels,
     datasets: [
       {
         data,
-        backgroundColor: [
-          "#FF6384",
-          "#36A2EB",
-          "#FFCE56",
-          "#4CAF50",
-          "#9C27B0",
-          "#FF9800",
-        ],
+        backgroundColor: labels.map((_, i) => palette[i % palette.length]),
       },
     ],
   };
+  const options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        labels: { color: getComputedStyle(document.documentElement).getPropertyValue('--color-text').trim() || '#111827' }
+      },
+      tooltip: {
+        callbacks: {
+          label: (ctx) => {
+            const label = ctx.label || '';
+            const value = ctx.raw ?? 0;
+            return `${label}: $${Number(value).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+          }
+        }
+      }
+    }
+  };
 
    return (
-    <div>
+    <div className="section card">
       <h2>Expenses by Description</h2>
       {expenses.length > 0 ? (
-        <Pie data={chartData} options={{ responsive: true }} />
+        <div className="chart-wrap">
+          <Pie data={chartData} options={options} />
+        </div>
       ) : (
-        <p>No expenses yet.</p>
+        <p className="empty-state">No expenses yet.</p>
       )}
     </div>
   );
