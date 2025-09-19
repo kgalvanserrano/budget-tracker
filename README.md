@@ -13,9 +13,9 @@ Track income and expenses with clear summaries and charts. Built with a sleek, m
 - Basic auth mock using LocalStorage (simple login/logout)
 - Responsive layout + dark-mode support (prefers-color-scheme)
 
-## Screenshots
-Add a screenshot here (optional):
-`/screenshot/demo.png`
+## Screenshot
+
+![Budget Tracker screenshot](./screenshot/budget-tracker.png)
 
 ## Getting started
 Prereqs: Node.js 16+ recommended
