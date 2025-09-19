@@ -13,7 +13,16 @@ export default function ExpensesByDescriptionChart({ transactions }) {
     const data = Object.values(descriptionTotals);
 
     const palette = [
-      '#2ECC71', '#34D399', '#22C55E', '#10B981', '#059669', '#16A34A', '#65A30D'
+      '#EF4444', // red
+      '#F59E0B', // amber
+      '#3B82F6', // blue
+      '#A855F7', // purple
+      '#EC4899', // pink
+      '#F97316', // orange
+      '#EAB308', // yellow
+      '#6366F1', // indigo
+      '#06B6D4', // cyan/sky
+      '#FB7185', // rose
     ];
     const chartData = {
     labels,
